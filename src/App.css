@@ -10,6 +10,7 @@
 .heading {
   font-family: 'Inconsolata', monospace; 
   font-size: 46pt;
+  letter-spacing: 0.1em;
 }
 
 .App-header {
