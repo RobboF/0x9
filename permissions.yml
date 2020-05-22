@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: "0x9"
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  namespace: "0x9"
+  name: "0x9-deployer"
+rules:
+- apiGroups: ["apps"]
+  resources: ["deployments"]
+  verbs: ["get","create"]
+- apiGroups: [""]
+  resources: ["services"]
+  verbs: ["get","create"]
+- apiGroups: ["traefik.containo.us"]
+  resources: ["ingressroutes"]
+  verbs: ["get","create"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: "0x9-deployer"
+  namespace: "0x9"
+subjects:
+- kind: ServiceAccount
+  name: "0x9-deployer"
+  namespace: "0x9"
+roleRef:
+  kind: Role
+  name: "0x9-deployer"
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: "0x9-deployer"
+  namespace: "0x9"
