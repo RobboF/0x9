@@ -28,7 +28,7 @@ steps:
 - name: Deploy app
   image: danielgormly/drone-plugin-kube:0.0.1
   settings:
-    template: deployment.yaml # relative to repo root
+    template: deployment.yml # relative to repo root
     ca:
       from_secret: k8s_cert
     server:
