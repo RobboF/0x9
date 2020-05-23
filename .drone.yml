@@ -14,14 +14,25 @@ steps:
     tags: 
       - latest
       - ${DRONE_COMMIT_SHA}
-- name: k8s-deploy
-  image: sinlead/drone-kubectl
+# - name: k8s-deploy
+#   image: sinlead/drone-kubectl
+#   settings:
+#     kubernetes_server:
+#       from_secret: k8s_server
+#     kubernetes_cert:
+#       from_secret: k8s_cert
+#     kubernetes_token:
+#       from_secret: k8s_token
+#   commands:
+#     - kubectl apply -f deployment.yml
+- name: Deploy app
+  image: danielgormly/drone-plugin-kube:0.0.1
   settings:
-    kubernetes_server:
-      from_secret: k8s_server
-    kubernetes_cert:
+    template: deployment.yaml # relative to repo root
+    ca:
       from_secret: k8s_cert
-    kubernetes_token:
-      from_secret: k8s_token
-  commands:
-    - kubectl apply -f deployment.yml
+    server:
+      from_secret: k8s_server
+    token:
+      from_secret: k8s_token 
+    ci-hash: ${DRONE_COMMIT_SHA}
