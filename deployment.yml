@@ -16,6 +16,7 @@ spec:
       containers:
       - name: '0x9'
         image: robbof/0x9:latest
+        imagePullPolicy: Always
       imagePullSecrets:
       - name: regcred
 ---
