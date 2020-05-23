@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: '0x9'
-        image: robbof/0x9:${DRONE_COMMIT_SHA}
+        image: robbof/0x9:{{ DRONE_COMMIT_SHA }}
         imagePullPolicy: Always
       imagePullSecrets:
       - name: regcred

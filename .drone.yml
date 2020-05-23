@@ -26,7 +26,7 @@ steps:
 #   commands:
 #     - kubectl apply -f deployment.yml
 - name: Deploy app
-  image: danielgormly/drone-plugin-kube:0.0.1
+  image: danielgormly/drone-plugin-kube:latest
   settings:
     template: deployment.yml # relative to repo root
     ca:
