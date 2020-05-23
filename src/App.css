@@ -9,7 +9,7 @@
 
 .heading {
   font-family: 'Inconsolata', monospace; 
-  font-size: 46pt;
+  font-size: 72pt;
   letter-spacing: 0.1em;
 }
 
@@ -26,13 +26,4 @@
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
