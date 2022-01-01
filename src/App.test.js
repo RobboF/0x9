@@ -1,9 +1,10 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App';
+import '@testing-library/jest-dom/extend-expect';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
+test('renders logo', () => {
+  const { getByAltText } = render(<App />);
+  const linkElement = getByAltText('logo');
   expect(linkElement).toBeInTheDocument();
 });
