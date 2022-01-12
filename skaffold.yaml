@@ -1,0 +1,21 @@
+apiVersion: skaffold/v2beta25
+kind: Config
+metadata:
+  name: -x-
+build:
+  artifacts:
+  - image: medium-query
+    context: backend/medium-query
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - skaffold/medium-query.yml
+
+portForward:
+- resourceType: pod
+  resourceName: medium-query
+  namespace: default
+  port: 8080
+  localPort: 8080
